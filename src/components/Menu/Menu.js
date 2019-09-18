@@ -15,18 +15,17 @@ class Menu extends React.Component {
     super(props);
     this.itemList = React.createRef();
 
-    const pages = props.pages.map(page => ({
-      to: page.node.fields.slug,
-      label: page.node.frontmatter.menuTitle
-        ? page.node.frontmatter.menuTitle
-        : page.node.frontmatter.title
-    }));
+    // const pages = props.pages.map(page => ({
+    //   to: page.node.fields.slug,
+    //   label: page.node.frontmatter.menuTitle
+    //     ? page.node.frontmatter.menuTitle
+    //     : page.node.frontmatter.title
+    // }));
 
     this.items = [
       { to: "/", label: "Home", icon: FaHome },
-      { to: "/category/", label: "Categories", icon: FaTag },
-      { to: "/search/", label: "Search", icon: FaSearch },
-      ...pages,
+      { to: "/seiya/", label: "seiya", icon: FaTag },
+      // ...pages,
       { to: "/contact/", label: "Contact", icon: FaEnvelope }
     ];
 

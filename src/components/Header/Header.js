@@ -4,10 +4,7 @@ import React from "react";
 import VisibilitySensor from "react-visibility-sensor";
 
 import { ScreenWidthContext, FontLoadedContext } from "../../layouts";
-import config from "../../../content/meta/config";
 import Menu from "../Menu";
-
-import avatar from "../../images/jpg/avatar.jpg";
 
 class Header extends React.Component {
   state = {
@@ -36,15 +33,6 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <header className={`header ${this.getHeaderSize()}`}>
-          <Link to="/" className="logoType">
-            <div className="logo">
-              <img src={config.gravatarImgMd5=="" ? avatar : config.gravatarImgMd5 } alt={config.siteTitle} />
-            </div>
-            <div className="type">
-              <h1>{config.headerTitle}</h1>
-              <h2>{config.headerSubTitle}</h2>
-            </div>
-          </Link>
           <FontLoadedContext.Consumer>
             {loaded => (
               <ScreenWidthContext.Consumer>
