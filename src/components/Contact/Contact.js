@@ -61,10 +61,10 @@ const Contact = props => {
             <Form
               name="contact"
               onSubmit={handleSubmit}
+              netlify-honeypot="bot-field"
               data-netlify="true"
-              data-netlify-honeypot="bot-field"
             >
-              <FormItem label="Name">
+              <FormItem label="お名前">
                 {getFieldDecorator("name", {
                   rules: [
                     {
@@ -73,30 +73,34 @@ const Contact = props => {
                   ]
                 })(<Input name="name" />)}
               </FormItem>
-              <FormItem label="E-mail">
+              <FormItem label="Emailアドレス">
                 {getFieldDecorator("email", {
                   rules: [
                     {
                       required: true,
-                      message: "Please input your e-mail address!",
+                      message: "Emailアドレスをご入力ください",
                       whitespace: true,
                       type: "email"
                     }
                   ]
                 })(<Input name="email" />)}
               </FormItem>
-              <FormItem label="Message">
+              <FormItem label="メッセージ">
                 {getFieldDecorator("message", {
                   rules: [
-                    { required: true, message: "Please input your message!", whitespace: true }
+                    { required: true, message: "Emailアドレスをご入力ください", whitespace: true }
                   ]
                 })(
-                  <TextArea name="message" placeholder="" autosize={{ minRows: 4, maxRows: 10 }} />
+                  <TextArea
+                    name="message"
+                    placeholder="メッセージをご入力ください"
+                    autosize={{ minRows: 4, maxRows: 10 }}
+                  />
                 )}
               </FormItem>
               <FormItem>
                 <Button type="primary" htmlType="submit">
-                  Submit
+                  送信
                 </Button>
               </FormItem>
             </Form>

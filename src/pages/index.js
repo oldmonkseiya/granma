@@ -9,9 +9,9 @@ import Seo from "../components/Seo";
 class IndexPage extends React.Component {
   separator = React.createRef();
 
-  scrollToContent = e => {
-    this.separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
-  };
+  // scrollToContent = e => {
+  //   this.separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
+  // };
 
   render() {
     const {

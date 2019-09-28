@@ -56,16 +56,16 @@ module.exports = {
         component: require.resolve(`./src/layouts/`)
       }
     },
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.ALGOLIA_APP_ID ? process.env.ALGOLIA_APP_ID : "",
-        apiKey: process.env.ALGOLIA_ADMIN_API_KEY ? process.env.ALGOLIA_ADMIN_API_KEY : "",
-        indexName: process.env.ALGOLIA_INDEX_NAME ? process.env.ALGOLIA_INDEX_NAME : "",
-        queries,
-        chunkSize: 10000 // default: 1000
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-algolia`,
+    //   options: {
+    //     appId: process.env.ALGOLIA_APP_ID ? process.env.ALGOLIA_APP_ID : "",
+    //     apiKey: process.env.ALGOLIA_ADMIN_API_KEY ? process.env.ALGOLIA_ADMIN_API_KEY : "",
+    //     indexName: process.env.ALGOLIA_INDEX_NAME ? process.env.ALGOLIA_INDEX_NAME : "",
+    //     queries,
+    //     chunkSize: 10000 // default: 1000
+    //   }
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -98,6 +98,20 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              width: 800,
+              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
+              height: 400, // Optional: Overrides optional.ratio
+              related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
+              noIframeBorder: true //Optional: Disable insertion of <style> border: 0
+            }
+          }
+        ]
+      },
+      options: {
+        plugins: [
           `gatsby-plugin-sharp`,
           {
             resolve: `gatsby-remark-images`,
@@ -107,9 +121,14 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: `gatsby-transformer-remark`,
             options: {
-              wrapperStyle: `margin-bottom: 2em`
+              plugins: [
+                {
+                  resolve: `gatsby-remark-video-poster`,
+                  options: { width: 720 }
+                }
+              ]
             }
           },
           `gatsby-remark-prismjs`,

@@ -23,11 +23,11 @@ class Menu extends React.Component {
     // }));
 
     this.items = [
-      { to: "/", label: "Home", icon: FaHome },
+      { to: "/", label: "ホーム", icon: FaHome },
       { to: "/ec/", label: "EC販売", icon: FaTag },
-      { to: "/order/", label: "お弁当注文" },
+      { to: "/lunchorder/", label: "お弁当注文" },
       // ...pages,
-      { to: "/contact/", label: "Contact", icon: FaEnvelope }
+      { to: "/contact/", label: "問い合わせ", icon: FaEnvelope }
     ];
 
     this.renderedItems = []; // will contain references to rendered DOM elements of menu
@@ -151,14 +151,13 @@ class Menu extends React.Component {
             ))}
           </ul>
           {this.state.hiddenItems.length > 0 && <Expand onClick={this.toggleMenu} theme={theme} />}
-          {open &&
-            screenWidth >= 1024 && (
-              <ul className="hiddenItemList">
-                {this.state.hiddenItems.map(item => (
-                  <Item item={item} key={item.label} hiddenItem theme={theme} />
-                ))}
-              </ul>
-            )}
+          {open && screenWidth >= 1024 && (
+            <ul className="hiddenItemList">
+              {this.state.hiddenItems.map(item => (
+                <Item item={item} key={item.label} hiddenItem theme={theme} />
+              ))}
+            </ul>
+          )}
         </nav>
 
         {/* --- STYLES --- */}
@@ -177,7 +176,6 @@ class Menu extends React.Component {
             z-index: 1;
             transition: all ${theme.time.duration.default};
           }
-
           .itemList {
             display: flex;
             flex-wrap: wrap;
@@ -188,7 +186,6 @@ class Menu extends React.Component {
             position: relative;
             width: 100%;
           }
-
           @below desktop {
             .menu {
               &::after {
@@ -200,17 +197,14 @@ class Menu extends React.Component {
                 height: 1px;
                 background: ${theme.color.brand.primary};
               }
-
               &.open {
                 padding: ${theme.space.inset.m};
               }
-
               :global(.homepage):not(.fixed) & {
                 bottom: -100px;
               }
             }
           }
-
           @from-width desktop {
             .menu {
               border-top: none;
@@ -221,12 +215,10 @@ class Menu extends React.Component {
               padding-left: 50px;
               transition: none;
             }
-
             .itemList {
               justify-content: flex-end;
               padding: 0;
             }
-
             .hiddenItemList {
               list-style: none;
               margin: 0;
@@ -241,8 +233,6 @@ class Menu extends React.Component {
               padding: ${theme.space.m};
               border-radius: ${theme.size.radius.small};
               border-top-right-radius: 0;
-
-
               &:after {
                 content: "";
                 background: ${theme.background.color.primary};
@@ -255,12 +245,10 @@ class Menu extends React.Component {
                 border-left: 1px solid ${theme.line.color};
                 border-right: 1px solid ${theme.line.color};
               }
-
               :global(.homepage):not(.fixed) & {
                 border: 1px solid transparent;
                 background: color(white alpha(-10%));
                 top: 50px;
-
                 &:after {
                   top: -11px;
                   border-left: 1px solid transparent;
@@ -268,7 +256,6 @@ class Menu extends React.Component {
                   background: color(white alpha(-10%));
                 }
               }
-
               :global(.fixed) & {
                 top: 44px;
               }
